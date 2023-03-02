@@ -13,16 +13,19 @@ export default function QuestionCard({ item }) {
                 <ol >
                     {item.answerList.map(ans =>
 
-                        <li
+                        <button
                             key={ans}
                             className={cs({
                                 correct: item.correctAnswer === ans && ans === item.userAnswer,
                                 wrong: ans !== item.correctAnswer && ans === item.userAnswer
                             })}
-                        >{ans}</li>
+                        >{ans}</button>
+
                     )}
                 </ol>
             </li>
+
+
         </>
     )
 }

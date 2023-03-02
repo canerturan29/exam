@@ -6,6 +6,7 @@ import QuestionCard from './QuestionCard'
 import { Link } from 'react-router-dom'
 
 import "../../index.css"
+import { Button, Stack } from '@mui/material'
 
 export default function Questions() {
 
@@ -21,8 +22,6 @@ export default function Questions() {
 
     return (<div className='container'>
         <div className="int-header">QUESTIONS</div>
-
-        <button className='int-btn' onClick={handleSubmit}>CHANGE</button>
         <ol>{questionList?.map(
             data =>
                 <QuestionCard key={data.id} item={data} />
@@ -31,9 +30,14 @@ export default function Questions() {
 
 
 
-        <div>
-            <button className="int-btn"><Link to={"/answers"} >SUBMIT</Link></button>
-        </div>
+
+
+        <Stack spacing={2} direction="row" style={{ alignItems: "center", display: "flex", justifyContent: "center" }}>
+            <Button variant="text" onClick={handleSubmit}>CHANGE QUESTIONS</Button>
+            <Button variant="contained" disableElevation><Link to={"/answers"} style={{ textDecoration: "none" }} >SUBMIT</Link></Button>
+
+        </Stack>
+
 
     </div>
     )

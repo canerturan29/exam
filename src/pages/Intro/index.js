@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { setQuestionList } from '../../redux/questionSlice'
 import { getQuestions } from '../../service/getQuestions'
 import "../../index.css"
+import { Button } from '@mui/material'
 export default function Intro() {
     const dispatch = useDispatch()
 
@@ -23,7 +24,11 @@ export default function Intro() {
                 </div>
 
                 <hr></hr>
-                <button className='int-btn'><Link to={"/questions"} >Start quiz</Link></button>
+                <div className='int-btn'>
+                    <Button variant="contained" disableElevation><Link to={"/questions"} style={{ textDecoration: "none" }} >Start quiz</Link></Button>
+
+                </div>
+
 
             </div>
         </form>

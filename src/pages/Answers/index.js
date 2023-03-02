@@ -1,28 +1,23 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { setQuestionList } from '../../redux/questionSlice'
-import { getQuestions } from '../../service/getQuestions'
+import { useSelector } from 'react-redux'
+
 import AnswerCard from './AnswerCard'
 import { Link } from 'react-router-dom'
 
 import "../../index.css"
+import { Button } from '@mui/material'
+
 
 export default function Answers() {
 
     const questionList = useSelector(state => state.questions.questionList)
 
-    const dispatch = useDispatch()
-    // const handleSubmit = () => { dispatch(setQuestionList()) }
 
-    async function handleSubmit() {
-        const data = await getQuestions()
-        dispatch(setQuestionList(data))
-    }
 
     return (<div className='container'>
-        <div className="int-header">QUESTIONS</div>
+        <div className="int-header">ANSWERS</div>
 
-        <button className='int-btn' onClick={handleSubmit}>CHANGE</button>
+
         <ol>{questionList?.map(
             data =>
                 <AnswerCard key={data.id} item={data} />
@@ -30,8 +25,16 @@ export default function Answers() {
         </ol>
 
 
+        <div>
+            <h3>
+                Your Score : {questionList.filter(item => item.userAnswer === item.correctAnswer).length}/10
+            </h3>
+        </div>
 
+        <div className='int-btn'>
+            <Button variant="contained" ><Link to={"/"} style={{ textDecoration: "none" }} >Try Again!</Link></Button>
 
+        </div>
 
     </div>
     )
